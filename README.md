@@ -3,7 +3,7 @@ A simple bash program to spawn subshells for python venvs
 
 Inspired by the `poetry shell` and `aws-sso exec` commands, this command invokes a subshell and automatically sources `.venv/bin/activate` in the current directory (or searches for a valid venv up the directory tree, for the dozens of us who like using `git worktree`). Also enables creating venvs in one command as well.
 
-No more fumbling with `python -m venv .venv; source .venv/bin/activate`, ain't got time to hit all those keys! I just want a shell that's ready to go!
+TLDR: Replace `$ python -m venv .venv; source .venv/bin/activate` with `$ envy`. No more fumbling with stupid typos, ain't got time to hit all those keys! I just want a shell that's ready to go!
 
 NOTE: This only supports `bash` at the moment.
 
