@@ -22,42 +22,6 @@ Documentation can be viewed with `$ envy --help`:
 envy
 Subshell spawner for Python
 
-This utility searched the current directory for a virtual environment
-in the current directory, travels up the directory tree (up to the
-users home directory) until a virtual env is found, then spawns a
-subshell that sources '.bashrc' and the virtual environment (and sets
-a value for 'ENVY').
-
-By default, searches for a virtual environment called '.venv', can be
-specified in the first argument.
-
-If a virtual environment is not found, a new virtual environment is
-created at the current directory and a subshell is invoked.
-
-USAGE:
-    codehelp [OPTIONS] [NAME]
-
-ARGS:
-    NAME              Virtual env to search/create (default: '.venv')
-
-OPTIONS:
-    -h, --help                                     Show documentation
-    -n, --new         Skip search and create/activate new virtual env
-/home/blake/.local/bin/envy: line 4: .venv-foo: command not found
-bash: cannot set terminal process group (124413): Inappropriate ioctl for device
-bash: no job control in this shell
-stty: 'standard input': Inappropriate ioctl for device
-(.venv-foo) [m[1m[36mblake[m [1m[37m@[m [1m[34mbanana[m [1m[37m:[m [1m[32m~/Workspace/repos/envy[m [1m[37m-[m [1m[93mmain *[1m[31m[m
-[1m$ [mexit
-bash: cannot set terminal process group (124413): Inappropriate ioctl for device
-bash: no job control in this shell
-stty: 'standard input': Inappropriate ioctl for device
-bash: /home/blake/Workspace/repos/envy/foo/bin/activate: No such file or directory
-[m[1m[36mblake[m [1m[37m@[m [1m[34mbanana[m [1m[37m:[m [1m[32m~/Workspace/repos/envy[m [1m[37m-[m [1m[93mmain *[1m[31m[m
-[1m$ [mexit
-envy
-Subshell spawner for Python
-
 This utility searches the current directory for a virtual environment
 in the current directory, travels up the directory tree (up to the
 users home directory) until a virtual env is found, then spawns a
@@ -72,8 +36,7 @@ created at the current directory and a subshell sourcing the new venv
 is invoked.
 
 Different venvs can be targeted/created via first positional arg (e.g.
-look for  by using Couldn't find a venv named foo, creating one in current directory
-Creating and activating venv (.venv-foo) in current dir).
+look for '.venv-foo' by using 'envy foo').
 
 USAGE:
     envy [OPTIONS] [NAME]
