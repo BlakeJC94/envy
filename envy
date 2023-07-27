@@ -79,13 +79,13 @@ main() {
 
     # Create new venv if requested
     if [ "${requested_new}" -eq 1 ]; then
-        venv_name=$(venv_prefix ${2})
+        venv_name=${2}
         new_venv "${venv_name}"
         return 0
     fi
 
     # Otherwise search upwards for the selected venv
-    venv_name=$(venv_prefix ${1})
+    venv_name=${1}
 
     local selected_dir
     local venv_dir
@@ -95,7 +95,7 @@ main() {
         # Don't activate venvs in /home/user, or any dirs that that are less than this depth
         if [ $(dir_depth "${selected_dir}") -le 2 ]; then break; fi
 
-        venv_dir="${selected_dir}/${venv_name}"
+        venv_dir="${selected_dir}/$(venv_prefix ${venv_name})"
         if [ -d "${venv_dir}" ]; then
             echo "Found ${venv_dir}"
             break
@@ -103,7 +103,7 @@ main() {
         selected_dir=$(dirname ${selected_dir})
     done
 
-    if [ -z "${venv_dir}" ]; then
+    if ! [ -d "${venv_dir}" ]; then
         echo "Couldn't find a venv named ${venv_name}, creating one in current directory"
         new_venv ${venv_name}
         venv_dir="$(pwd)/${venv_name}"
