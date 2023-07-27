@@ -128,7 +128,7 @@ new_venv() {
 venv_prefix() {
     local venv_prefix
     venv_prefix=".venv"
-    ( [ -z "${1}" ] && echo "${venv_prefix}-${1}" ) || echo "${venv_prefix}"
+    ( [ -z "${1}" ] && echo "${venv_prefix}" ) || echo "${venv_prefix}-${1}"
 }
 
 venv_subshell() {
