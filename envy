@@ -19,7 +19,7 @@ created at the current directory and a subshell sourcing the new venv
 is invoked.
 
 Different venvs can be targeted/created via first positional arg (e.g.
-look for `.venv-foo` by using `envy foo`).
+look for '.venv-foo' by using 'envy foo').
 
 USAGE:
     envy [OPTIONS] [NAME]
