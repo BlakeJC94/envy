@@ -106,10 +106,10 @@ main() {
     if ! [ -d "${venv_dir}" ]; then
         echo "Couldn't find a venv named ${venv_name}, creating one in current directory"
         new_venv ${venv_name}
-        venv_dir="$(pwd)/${venv_name}"
+    else
+        venv_subshell "${venv_dir}"
     fi
 
-    venv_subshell "${venv_dir}"
     return 0
 }
 
