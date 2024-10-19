@@ -5,7 +5,7 @@ Inspired by the `poetry shell` and `aws-sso exec` commands, this command invokes
 
 TLDR: Replace `$ python -m venv .venv; source .venv/bin/activate` with `$ envy`. No more fumbling with stupid typos, ain't got time to hit all those keys! I just want a shell that's ready to go!
 
-NOTE: This only supports `bash` at the moment.
+NOTE: This only supports `bash` and `zsh` at the moment.
 
 ## Installation
 Use your preferred way of installing an executable to your `PATH`. I suggest using `curl`:
@@ -49,5 +49,30 @@ OPTIONS:
     -n, --new         Skip search and create/activate new virtual env
 ```
 
+## Oh My Zsh! Compatibility
+
+Ensure that the `virtualenv` plugin in enabled
+```zsh
+# ~/.zshrc
+plugins=(... virtualenv)
+```
+
+And make sure to use a theme with `virtualenv` support. To modify the default robbyrussell
+theme:
+```diff
+# ~/.oh-my-zsh/themes/robbyrussell.zsh-theme
+-PROMPT="%(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%} ) %{$fg[cyan]%}%c%{$reset_color%}"
++PROMPT='$(virtualenv_prompt_info) '
++PROMPT+="%(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%} ) %{$fg[cyan]%}%c%{$reset_color%}"
+ PROMPT+=' $(git_prompt_info)'
+
++ZSH_THEME_VIRTUALENV_PREFIX="("
++ZSH_THEME_VIRTUALENV_SUFFIX=")"
++
+ ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
+ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
+ ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}%1{✗%}"
+```
+
 ## TODO
-* [ ] zsh and fish support?
+* [x] zsh and fish support?
